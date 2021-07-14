@@ -13,6 +13,7 @@ public:
     int Deleted(int i);
     int Locate(DataType x);
     DataType Get(int i);
+    void Print();
 private:
     DataType data[MAXSIZE];
     int len;
@@ -76,15 +77,45 @@ int SequenList::Locate(DataType x)
 
 DataType SequenList::Get(int i)
 {
-    
+    if(i<1 || (i>len+1))
+    {
+        cout <<"position is not correct!"<<endl;
+        return 0;
+    }
+    else
+    {
+        return data[i-1];
+    }
 }
 
+int SequenList::Length()
+{
+    return len;
+}
+
+void SequenList::Print()
+{
+    for(int i=0; i<len; i++)
+    {
+        cout << data[i]<<" ";
+    } 
+    cout <<endl;
+}
 
 int main()
 {
     SequenList L;
     L.Initiate();
+    L.Insert(2,1);
+    cout<<L.Length()<<endl;
 
+    L.Insert(1,1);
+    cout<<L.Length()<<endl;
+
+    L.Insert(3,3);
+    cout<<L.Length()<<endl;
+
+    L.Print();
     cout << "yes, you can run it!"<<endl;
     return 0;
 }
